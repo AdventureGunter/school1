@@ -10,7 +10,11 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 
-var routes = require('./routes/index');
+var indexRouter = require('./routes/index');
+var loginRouter = require('./routes/loginPage');
+var registerRouter = require('./routes/registerPage');
+var editAccRouter = require('./routes/editAccPage');
+
 var users = require('./routes/users');
 
 var app = express();
@@ -36,11 +40,15 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', routes);
+app.use('/', indexRouter);
+app.use('/', loginRouter);
+app.use('/', registerRouter);
+app.use('/', editAccRouter);
 
 // passport config
+
 var Account = require('./models/account');
-passport.use(new LocalStrategy(Account.authenticate()));
+passport.use('acc', new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
