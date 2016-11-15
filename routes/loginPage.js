@@ -17,6 +17,7 @@ router.post('/login', passport.authenticate('acc', { failureRedirect: '/login', 
         res.redirect('/');
     });
 });
-    module.exports = router;
+
+module.exports = router;
 
 

@@ -2,14 +2,6 @@ extends layout
 
 block content
   .container
-    if (!user)
-      a(href="/login") Login
-    if (user)
-      if (user.status != 1)
         p You are currently logged in as #{user.username}
         a(href="/logout") Logout
-      if (user.status == 1)
-        p You are currently logged in as ADMIN
-        a(href="/register") Register user
-        br
-        a(href="/logout") Logout
+

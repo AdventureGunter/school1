@@ -2,46 +2,40 @@
  * Created by Стас on 04.11.2016.
  */
 const express = require('express');
+const aut = require('./aut');
+const router = express.Router();
+
+//db Models
 const Account = require('../models/account');
 const Admin = require('../models/admin');
 const Parent = require('../models/parent');
 const Student = require('../models/student');
 const Teacher = require('../models/teacher');
-const router = express.Router();
+//--------------------------------------------
 
 
-router.get('/register', function(req, res) {
-    if (!req.user){
-        res.redirect('/');
-    }
-    else {
-        if (req.user.status != 1){
-            res.redirect('/');
-        }
-        else res.render('register', { user : req.user });
-    }
+
+router.get('/register', aut.isAuthenticated, aut.isAdmin, function(req, res) {
+    res.render('register', { user : req.user });
 });
 
-router.post('/register', function(req, res, next) {
-    if ((req.user.status != 1) || !req.user){next({error : "this page only for admin"})}
-    else {
-        switch (req.body.status){
-            case "1" :{
-                registerAcc(req, res, Admin);
-                break;
-            }
-            case "2" :{
-                registerAcc(req, res, Parent);
-                break;
-            }
-            case "3" :{
-                registerAcc(req, res, Student);
-                break;
-            }
-            case "4" :{
-                registerAcc(req, res, Teacher);
-                break;
-            }
+router.post('/register', aut.isAuthenticated, aut.isAdmin, function(req, res, next) {
+    switch (req.body.status){
+        case "1" :{
+            registerAcc(req, res, Admin);
+            break;
+        }
+        case "2" :{
+            registerAcc(req, res, Parent);
+            break;
+        }
+        case "3" :{
+            registerAcc(req, res, Student);
+            break;
+        }
+        case "4" :{
+            registerAcc(req, res, Teacher);
+            break;
         }
     }
 });

@@ -7,7 +7,16 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 const Student = new Schema({
     username: String,
-    status: {type : Number, default: 3}    // 1 -- admin status. 2 -- parent. 3 -- student. 4 -- teacher
+    status: {type : Number, default: 3},    // 1 -- admin status. 2 -- parent. 3 -- student. 4 -- teacher
+    firstName : String,
+    lastName : String,
+    email : String,
+    phoneNumber : String,
+    homeworkLinks : {type : [String], default : []},
+    class : Object,
+    parent : {type : [String], default : []},
+    classroomTeacher : String,
+    journalNumber : Number
 });
 
 Student.plugin(passportLocalMongoose);

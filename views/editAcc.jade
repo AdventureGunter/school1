@@ -1,16 +1,31 @@
-//
-   Created by Стас on 03.11.2016.
 
 extends layout
+append content
+    script(src='/javascript/editPage.js')
 
 block content
     .container
-        -for(var prop in json)
-            p #{json[prop].username}
-            form(role='form', action="/editAcc",method="post", style='max-width: 300px;')
-                    .form-group
-                        input(name='userId', value=json[prop].id, type='hidden')
-                    .form-group
-                        input.form-control(type='text', name="username", placeholder='Enter Username')
-                    button.btn.btn-default(type='submit') Submit
-            &nbsp;
+        button#btnGetStudents Get Students
+        button#btnGetTeachers Get Teachers
+        button#btnGetParents Get Parents
+
+        br
+        form(role='form', class="edtUserForm" action="/editAcc",method="post", style='max-width: 300px; display: none;')
+            .form-group
+                input.form-control(type='text', name="username", placeholder='Enter Username')
+            .form-group
+                    input.form-control(type='text', id="status", name="status", placeholder='Status', style='display: none;')
+            .form-group
+                input.form-control(type='text', id="id", name="userId", placeholder='id', style='display: none;')
+            button.btn.btn-default(type='submit') Submit
+
+        h2 User List
+            #userList
+                table
+                    thead
+                        th UserName
+                        th Status
+                        th Edit
+                    tbody
+
+

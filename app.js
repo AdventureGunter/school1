@@ -14,6 +14,7 @@ var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/loginPage');
 var registerRouter = require('./routes/registerPage');
 var editAccRouter = require('./routes/editAccPage');
+var schedule = require('./routes/schedule');
 
 var users = require('./routes/users');
 
@@ -44,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/', loginRouter);
 app.use('/', registerRouter);
 app.use('/', editAccRouter);
+app.use('/', schedule);
 
 // passport config
 

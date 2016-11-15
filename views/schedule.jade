@@ -1,0 +1,33 @@
+//
+   Created by Стас on 15.11.2016.
+
+extends layout
+append content
+    script(src='/javascript/schedule.js')
+block content
+    .container
+
+        input(type='text', id="month", name="month", placeholder='Enter Month')
+        button#btnCreateCalendar Lalalal
+
+        button(id="addLesson", style='display: none;') Edit
+
+        form(role='form', class="addLessonForm" action="/addLesson",method="post", style='max-width: 300px; display: none;')
+            .form-group
+                input.form-control(type='text', name="teacherName", placeholder='Enter teacher username')
+            .form-group
+                input.form-control(type='text', id="subject", name="subject", placeholder='Subject')
+            .form-group
+                input.form-control(type='text', id="classroomNumber", name="classroomNumber", placeholder='Classroom number')
+            .form-group
+                input.form-control(type='text', id="lessonNumber", name="lessonNumber", placeholder='lesson number')
+            .form-group
+                input.form-control(type='text', id="date", name="date", placeholder='Date')
+            button.btn.btn-default(type='submit') Submit
+
+        h2 Calendar
+            #calendar
+
+        if (user.status == 1)
+            script.
+                $("#addLesson").show();
