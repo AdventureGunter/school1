@@ -3,7 +3,7 @@ module.exports.isAuthenticated = function (req, res, next) {
         next();
     }
     else {
-        res.redirect('/');
+        res.redirect('/login');
     }
 };
 
@@ -12,6 +12,6 @@ module.exports.isAdmin = function (req, res, next) {
         next();
     }
     else {
-        res.redirect('/');
+        res.redirect('/login');
     }
 };

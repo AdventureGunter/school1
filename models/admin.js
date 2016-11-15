@@ -10,7 +10,7 @@ const Admin = new Schema({
     status: {type : Number, default: 1},    // 1 -- admin status. 2 -- parent. 3 -- student. 4 -- teacher
     firstName : String,
     lastName : String,
-    eMail : String,
+    email : String,
     phoneNumber : String,
 });
 

@@ -15,7 +15,7 @@ const Teacher = require('../models/teacher');
 
 
 
-router.get('/register', aut.isAuthenticated, aut.isAdmin,function(req, res) {
+router.get('/register', aut.isAuthenticated, aut.isAdmin, function(req, res) {
     res.render('register', { user : req.user });
 });
 

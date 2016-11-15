@@ -14,10 +14,6 @@ const Teacher = require('../models/teacher');
 
 
 router.get('/getUsers', aut.isAuthenticated, aut.isAdmin, function(req, res) {
-    if ((req.user.status != 1) || !req.user){
-        res.redirect('/');
-    }
-    else {
         switch (req.query.q){
             case "2" :{
                 getUsers(req, res, Parent);
@@ -32,7 +28,6 @@ router.get('/getUsers', aut.isAuthenticated, aut.isAdmin, function(req, res) {
                 break;
             }
         }
-    }
 });
 
 router.get('/editAcc', aut.isAuthenticated, aut.isAdmin, function(req, res) {
@@ -87,4 +82,5 @@ function getUsers (req, res, context) {
         }
     });
 }
+
 module.exports = router;

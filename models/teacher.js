@@ -10,7 +10,7 @@ const Teacher = new Schema({
     status: {type : Number, default: 4},   // 1 -- admin status. 2 -- parent. 3 -- student. 4 -- teacher
     firstName : String,
     lastName : String,
-    eMail : String,
+    email : String,
     phoneNumber : String,
     homeworkLinks : {type : [String], default : []},
     isClassroomTeacher : {type : Boolean, default: false},

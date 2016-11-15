@@ -15,6 +15,4 @@ const homeworkFileSchema = new Schema({
     size: Number
 });
 
-var homeworkFile = mongoose.model('homeworkFile', homeworkFileSchema);
-
-exports.homeworkFile = homeworkFile;
+module.exports = mongoose.model('homeworkFile', homeworkFileSchema);
